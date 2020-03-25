@@ -15,13 +15,13 @@ CREATE TABLE Owners(
 	OwnerName VARCHAR(50) NULL,
 	ClubOwned VARCHAR(50) NULL,
 	ClubPercOwned INT NULL,
-	NetWorth INT NULL
+	NetWorthMill INT NULL
 );
 
 CREATE TABLE Agents(
 	AgentID INT NOT NULL PRIMARY KEY IDENTITY,
 	AgentName VARCHAR(50) NULL,
-	AgentFee INT NULL,
+	AgentFeeMill INT NULL,
 	PlayerPercOwned INT NULL
 );
 
@@ -50,25 +50,25 @@ CREATE TABLE HeadStaffs(
 	ScoutID INT FOREIGN KEY REFERENCES Scouts(ScoutID)
 );
 
-INSERT INTO Owners VALUES
-('Sheikh Mansour', 'Manchester City', 100, 17000000000),
-('Stan Kroenke', 'Arsenal', 100, 10000000000)
+INSERT INTO Owners (OwnerName, ClubOwned, ClubPercOwned, NetWorthMill) VALUES
+('Sheikh Mansour', 'Manchester City', 100, 17000),
+('Stan Kroenke', 'Arsenal', 100, 10000)
 GO
 
-INSERT INTO Agents VALUES
-('Mino Raiola', 30000000, 0),
-('Jorge Mendes', 15000000, 5)
+INSERT INTO Agents (AgentName, AgentFeeMill, PlayerPercOwned) VALUES
+('Mino Raiola', 30, 0),
+('Jorge Mendes', 15, 5)
 GO
 
-INSERT INTO Players VALUES 
-('Paul Pogba', 27, 0, 0, 250000, 3),
-('Ederson', 26, 0, 1, 160000, 5)
+INSERT INTO Players (PlayerName, PlayerAge, OwnerID, AgentID, Salary, ContractLength) VALUES 
+('Paul Pogba', 27, 1, 1, 250000, 3),
+('Ederson', 26, 1, 2, 160000, 5)
 GO
 
-INSERT INTO Scouts VALUES
-('John Smith', 2, 'Portugal')
+INSERT INTO Scouts (ScoutName, PlayerID, CountryBased) VALUES
+('John Smith', 1, 'Portugal')
 GO
 
-INSERT INTO HeadStaffs VALUES
-('Edu', 2, 'Technical Director', 2)
+INSERT INTO HeadStaffs (StaffName, OwnerID, StaffRole, ScoutID) VALUES
+('Edu', 2, 'Technical Director', 1)
 GO
